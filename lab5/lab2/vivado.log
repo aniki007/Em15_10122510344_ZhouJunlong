@@ -1,0 +1,265 @@
+#-----------------------------------------------------------
+# Vivado v2013.4 (64-bit)
+# SW Build 353583 on Mon Dec  9 17:49:19 MST 2013
+# IP Build 208076 on Mon Dec  2 12:38:17 MST 2013
+# Start of session at: Mon Apr 20 20:33:54 2015
+# Process ID: 7824
+# Log file: F:/emd/lab1/vivado.log
+# Journal file: F:/emd/lab1\vivado.jou
+#-----------------------------------------------------------
+Attempting to get a license: Implementation
+WARNING: [Common 17-301] Failed to get a license: Implementation
+WARNING: [Vivado 15-19] WARNING: No 'Implementation' license found. This message may be safely ignored if a Vivado WebPACK or device-locked license, common for board kits, will be used during implementation.
+
+Attempting to get a license: Synthesis
+WARNING: [Common 17-301] Failed to get a license: Synthesis
+Loading parts and site information from D:/xlinx/Vivado/2013.4/data/parts/arch.xml
+Parsing RTL primitives file [D:/xlinx/Vivado/2013.4/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [D:/xlinx/Vivado/2013.4/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+open_project {F:\emd\lab1\lab1.xpr}
+INFO: [Project 1-313] Project file moved from 'C:/xup/embedded/labs/lab1' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/xlinx/Vivado/2013.4/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 918.895 ; gain = 68.672
+WARNING: [Vivado 15-19] WARNING: No 'Implementation' license found. This message may be safely ignored if a Vivado WebPACK or device-locked license, common for board kits, will be used during implementation.
+
+open_bd_design {F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd}
+Adding component instance block -- xilinx.com:ip:processing_system7:5.3 - processing_system7_0
+Successfully read diagram <system> from BD file <F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd>
+startgroup
+set_property -dict [list CONFIG.PCW_USE_M_AXI_GP0 {1} CONFIG.PCW_EN_CLK0_PORT {1} CONFIG.PCW_EN_RST0_PORT {1}] [get_bd_cells processing_system7_0]
+endgroup
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0
+endgroup
+set_property name sw [ get_bd_cells axi_gpio_0]
+set_property name sw_4bit [ get_bd_cells sw]
+startgroup
+set_property -dict [list CONFIG.C_GPIO_WIDTH {4} CONFIG.C_ALL_INPUTS {1}] [get_bd_cells sw_4bit]
+endgroup
+regenerate_bd_layout
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config {Master "/processing_system7_0/M_AXI_GP0" }  [get_bd_intf_pins sw_4bit/S_AXI]
+</sw_4bit/S_AXI/Reg> is being mapped into </processing_system7_0/Data> at <0x41200000[ 64K ]>
+apply_bd_automation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1402.082 ; gain = 0.000
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0
+endgroup
+set_property name btns_4bit [ get_bd_cells axi_gpio_0]
+set_property -dict [list CONFIG.C_GPIO_WIDTH {4}] [get_bd_cells btns_4bit]
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config {Master "/processing_system7_0/M_AXI_GP0" }  [get_bd_intf_pins btns_4bit/S_AXI]
+</btns_4bit/S_AXI/Reg> is being mapped into </processing_system7_0/Data> at <0x41210000[ 64K ]>
+regenerate_bd_layout
+startgroup
+create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 GPIO
+connect_bd_intf_net [get_bd_intf_pins sw_4bit/GPIO] [get_bd_intf_ports /GPIO]
+endgroup
+startgroup
+create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 GPIO_1
+connect_bd_intf_net [get_bd_intf_pins btns_4bit/GPIO] [get_bd_intf_ports /GPIO_1]
+endgroup
+set_property name sw_4bit [ get_bd_intf_ports GPIO]
+set_property name btns_4bit [ get_bd_intf_ports GPIO_1]
+validate_bd_design
+success
+make_wrapper -files [get_files F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd] -top
+VHDL Output written to : system.vhd
+VHDL Output written to : system_wrapper.vhd
+Wrote  : <F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd> 
+import_files -force -norecurse F:/emd/lab1/lab1.srcs/sources_1/bd/system/hdl/system_wrapper.vhd
+add_files -fileset constrs_1 -norecurse D:/gamedownload/【2015春】/Zybo开发实验/实验材料/lab2/lab2.xdc
+import_files -fileset constrs_1 D:/gamedownload/【2015春】/Zybo开发实验/实验材料/lab2/lab2.xdc
+save_bd_design
+Wrote  : <F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd> 
+launch_runs synth_1
+VHDL Output written to : system.vhd
+VHDL Output written to : system_wrapper.vhd
+Wrote  : <F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd> 
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'system_processing_system7_0_0'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0 .
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'system_axi_gpio_0_0'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /sw_4bit .
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'system_rst_processing_system7_0_100M_0'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /rst_processing_system7_0_100M .
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'system_axi_gpio_0_1'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /btns_4bit .
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'system_xbar_1'...
+WARNING: [IP_Flow 19-1687] The current project language is set to VHDL. However IP 'system_xbar_1' does not support 'VHDL Synthesis' output products, delivering 'Verilog Synthesis' output products instead.
+INFO: [IP_Flow 19-616] The current project language is set to Verilog. However the IP definition 'xilinx.com:ip:fifo_generator:11.0' does not support 'Verilog Synthesis' output products, delivering 'VHDL Synthesis' output products instead.
+INFO: [IP_Flow 19-616] The current project language is set to Verilog. However the IP definition 'xilinx.com:ip:blk_mem_gen:8.1' does not support 'Verilog Synthesis' output products, delivering 'VHDL Synthesis' output products instead.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0_axi_periph/xbar .
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'system_auto_pc_2'...
+WARNING: [IP_Flow 19-1687] The current project language is set to VHDL. However IP 'system_auto_pc_2' does not support 'VHDL Synthesis' output products, delivering 'Verilog Synthesis' output products instead.
+INFO: [IP_Flow 19-616] The current project language is set to Verilog. However the IP definition 'xilinx.com:ip:fifo_generator:11.0' does not support 'Verilog Synthesis' output products, delivering 'VHDL Synthesis' output products instead.
+INFO: [IP_Flow 19-616] The current project language is set to Verilog. However the IP definition 'xilinx.com:ip:blk_mem_gen:8.1' does not support 'Verilog Synthesis' output products, delivering 'VHDL Synthesis' output products instead.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-539] Not generating up to date 'Implementation' target for block design system
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /sw_4bit .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /rst_processing_system7_0_100M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /btns_4bit .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0_axi_periph/s00_couplers/auto_pc .
+[Mon Apr 20 21:24:14 2015] Launched synth_1...
+Run output will be captured here: F:/emd/lab1/lab1.runs/synth_1/runme.log
+launch_runs: Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 1471.168 ; gain = 4.715
+reset_run synth_1
+launch_runs synth_1
+[Mon Apr 20 21:35:33 2015] Launched synth_1...
+Run output will be captured here: F:/emd/lab1/lab1.runs/synth_1/runme.log
+open_run synth_1 -name netlist_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7z010clg400-1
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2013.4
+Loading clock regions from D:/xlinx/Vivado/2013.4/data\parts/xilinx/zynq/zynq/xc7z010/ClockRegion.xml
+Loading clock buffers from D:/xlinx/Vivado/2013.4/data\parts/xilinx/zynq/zynq/xc7z010/ClockBuffers.xml
+Loading clock placement rules from D:/xlinx/Vivado/2013.4/data/parts/xilinx/zynq/ClockPlacerRules.xml
+Loading package pin functions from D:/xlinx/Vivado/2013.4/data\parts/xilinx/zynq/PinFunctions.xml...
+Loading package from D:/xlinx/Vivado/2013.4/data\parts/xilinx/zynq/zynq/xc7z010/clg400/Package.xml
+Loading io standards from D:/xlinx/Vivado/2013.4/data\./parts/xilinx/zynq/IOStandards.xml
+INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc] for cell 'system_i/processing_system7_0/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc] for cell 'system_i/processing_system7_0/U0'
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc] for cell 'system_i/sw_4bit/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc] for cell 'system_i/sw_4bit/U0'
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc] for cell 'system_i/sw_4bit/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc] for cell 'system_i/sw_4bit/U0'
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_rst_processing_system7_0_100M_0/system_rst_processing_system7_0_100M_0.xdc] for cell 'system_i/rst_processing_system7_0_100M/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_rst_processing_system7_0_100M_0/system_rst_processing_system7_0_100M_0.xdc] for cell 'system_i/rst_processing_system7_0_100M/U0'
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_rst_processing_system7_0_100M_0/system_rst_processing_system7_0_100M_0_board.xdc] for cell 'system_i/rst_processing_system7_0_100M/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_rst_processing_system7_0_100M_0/system_rst_processing_system7_0_100M_0_board.xdc] for cell 'system_i/rst_processing_system7_0_100M/U0'
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1.xdc] for cell 'system_i/btns_4bit/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1.xdc] for cell 'system_i/btns_4bit/U0'
+Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_board.xdc] for cell 'system_i/btns_4bit/U0'
+Finished Parsing XDC File [f:/emd/lab1/lab1.srcs/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_board.xdc] for cell 'system_i/btns_4bit/U0'
+Parsing XDC File [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[3]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:15]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:15]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[3]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:16]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:16]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[2]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:17]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[2]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:18]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:18]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[1]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:19]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[0]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:20]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[1]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:21]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:21]
+WARNING: [Vivado 12-584] No ports matched 'btns_4bit_tri_i[0]'. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc:22]
+Finished Parsing XDC File [F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+INFO: [Memdata 28-144] Successfully populated the BRAM INIT strings from the following elf files: 
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (OBUFT, IBUF): 4 instances
+
+open_run: Time (s): cpu = 00:00:33 ; elapsed = 00:00:24 . Memory (MB): peak = 2246.930 ; gain = 740.531
+startgroup
+set_property package_pin Y16 [get_ports {btns_4bit_tri_io[3]}]
+endgroup
+set_property package_pin "" [get_ports [list  {btns_4bit_tri_io[2]}]]
+set_property iostandard LVCMOS18 [get_ports [list {btns_4bit_tri_io[3]}]]
+set_property iostandard LVCMOS33 [get_ports [list {btns_4bit_tri_io[3]} {btns_4bit_tri_io[2]} {btns_4bit_tri_io[1]} {btns_4bit_tri_io[0]}]]
+startgroup
+set_property package_pin V16 [get_ports {btns_4bit_tri_io[2]}]
+endgroup
+startgroup
+set_property package_pin P16 [get_ports {btns_4bit_tri_io[1]}]
+endgroup
+startgroup
+set_property package_pin R18 [get_ports {btns_4bit_tri_io[0]}]
+endgroup
+set_property target_constrs_file F:/emd/lab1/lab1.srcs/constrs_1/imports/lab2/lab2.xdc [current_fileset -constrset]
+save_constraints -force
+INFO: [Vivado 12-3488] The target constraint file will be updated. Since the file was included by the synthesis run, this run will be marked out-of-date. If this is not desired, the run can be forced up-to-date. Also, the USEDIN_SYNTHESIS property can be set to false if synthesis run should not depend on the target constraint file.
+generate_target all [get_files  F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'system_processing_system7_0_0'...
+INFO: [IP_Flow 19-1706] Not generating 'Synthesis' target for IP 'system_processing_system7_0_0'. Target already exists and is up to date.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'system_processing_system7_0_0'...
+WARNING: [IP_Flow 19-2987] IP 'system_processing_system7_0_0' with unlicensed IP definition 'xilinx.com:ip:processing_system7:5.3' depends on licensed subcore IP definition 'xilinx.com:ip:processing_system7_bfm:2.0'. Please update your IP definition with license information.
+WARNING: [xilinx.com:ip:processing_system7:5.3-1] system_processing_system7_0_0: The Zynq BFM requires an AXI BFM license to run. Please ensure that you have purchased and setup the AXI BFM license prior to running simulation with this block. Please contact your Xilinx sales office for more information on purchasing this license
+INFO: [IP_Flow 19-1686] Generating 'Miscellaneous' target for IP 'system_processing_system7_0_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'system_processing_system7_0_0'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0 .
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'system_axi_gpio_0_0'...
+INFO: [IP_Flow 19-1706] Not generating 'Synthesis' target for IP 'system_axi_gpio_0_0'. Target already exists and is up to date.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'system_axi_gpio_0_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'system_axi_gpio_0_0'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /sw_4bit .
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'system_rst_processing_system7_0_100M_0'...
+INFO: [IP_Flow 19-1706] Not generating 'Synthesis' target for IP 'system_rst_processing_system7_0_100M_0'. Target already exists and is up to date.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'system_rst_processing_system7_0_100M_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'system_rst_processing_system7_0_100M_0'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /rst_processing_system7_0_100M .
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'system_axi_gpio_0_1'...
+INFO: [IP_Flow 19-1706] Not generating 'Synthesis' target for IP 'system_axi_gpio_0_1'. Target already exists and is up to date.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'system_axi_gpio_0_1'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'system_axi_gpio_0_1'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /btns_4bit .
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'system_xbar_1'...
+INFO: [IP_Flow 19-1706] Not generating 'Synthesis' target for IP 'system_xbar_1'. Target already exists and is up to date.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'system_xbar_1'...
+WARNING: [IP_Flow 19-1687] The current project language is set to VHDL. However IP 'system_xbar_1' does not support 'VHDL Simulation' output products, delivering 'Verilog Simulation' output products instead.
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'system_xbar_1'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0_axi_periph/xbar .
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'system_auto_pc_2'...
+INFO: [IP_Flow 19-1706] Not generating 'Synthesis' target for IP 'system_auto_pc_2'. Target already exists and is up to date.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'system_auto_pc_2'...
+WARNING: [IP_Flow 19-1687] The current project language is set to VHDL. However IP 'system_auto_pc_2' does not support 'VHDL Simulation' output products, delivering 'Verilog Simulation' output products instead.
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'system_auto_pc_2'...
+INFO: [BD 41-1029] Generation completed for the IP Integrator block /processing_system7_0_axi_periph/s00_couplers/auto_pc .
+generate_target: Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 2349.238 ; gain = 0.000
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.187 . Memory (MB): peak = 2349.238 ; gain = 0.000
+[Mon Apr 20 21:56:22 2015] Launched impl_1...
+Run output will be captured here: F:/emd/lab1/lab1.runs/impl_1/runme.log
+close_design
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2013.4
+Parsing XDC File [f:/emd/lab1/.Xil/Vivado-7824-SWOWNXXZJYWAPQC/dcp/system_wrapper_board.xdc]
+Finished Parsing XDC File [f:/emd/lab1/.Xil/Vivado-7824-SWOWNXXZJYWAPQC/dcp/system_wrapper_board.xdc]
+Parsing XDC File [f:/emd/lab1/.Xil/Vivado-7824-SWOWNXXZJYWAPQC/dcp/system_wrapper_early.xdc]
+Finished Parsing XDC File [f:/emd/lab1/.Xil/Vivado-7824-SWOWNXXZJYWAPQC/dcp/system_wrapper_early.xdc]
+Parsing XDC File [f:/emd/lab1/.Xil/Vivado-7824-SWOWNXXZJYWAPQC/dcp/system_wrapper.xdc]
+Finished Parsing XDC File [f:/emd/lab1/.Xil/Vivado-7824-SWOWNXXZJYWAPQC/dcp/system_wrapper.xdc]
+Reading XDEF placement.
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 2352.434 ; gain = 0.000
+Restoring placement.
+Restored 420 out of 420 XDEF sites from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+INFO: [Memdata 28-144] Successfully populated the BRAM INIT strings from the following elf files: 
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (OBUFT, IBUF): 4 instances
+
+open_run: Time (s): cpu = 00:00:19 ; elapsed = 00:00:14 . Memory (MB): peak = 2378.203 ; gain = 25.770
+export_hardware [get_files F:/emd/lab1/lab1.srcs/sources_1/bd/system/system.bd] [get_runs impl_1] -bitstream
+WARNING: [Vivado 12-690] Backannotated BMM file does not exist in the run dir:F:/emd/lab1/lab1.runs/impl_1/system_wrapper_bd.bmm
+Exporting to file F:/emd/lab1/lab1.sdk/SDK/SDK_Export/hw/system.xml
+INFO: [BD 41-436] exporting bit file 'F:/emd/lab1/lab1.runs/impl_1/system_wrapper.bit'...
+export_hardware: Time (s): cpu = 00:00:18 ; elapsed = 00:00:17 . Memory (MB): peak = 2408.422 ; gain = 21.199
+launch_sdk -bit F:/emd/lab1/lab1.sdk/SDK/SDK_Export/hw/system_wrapper.bit -workspace F:/emd/lab1/lab1.sdk/SDK/SDK_Export -hwspec F:/emd/lab1/lab1.sdk/SDK/SDK_Export/hw/system.xml
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -bit F:/emd/lab1/lab1.sdk/SDK/SDK_Export/hw/system_wrapper.bit -workspace F:/emd/lab1/lab1.sdk/SDK/SDK_Export -hwspec F:/emd/lab1/lab1.sdk/SDK/SDK_Export/hw/system.xml
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 20 22:23:05 2015...
