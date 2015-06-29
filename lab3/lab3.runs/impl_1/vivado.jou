@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2014.2
+# SW Build 932637 on Wed Jun 11 13:27:54 MDT 2014
+# IP Build 924643 on Fri May 30 09:20:16 MDT 2014
+# Start of session at: Mon Apr 20 22:27:02 2015
+# Process ID: 6220
+# Log file: D:/123456/em15-340-yangxi/lab2/lab2.runs/impl_1/system_wrapper.vdi
+# Journal file: D:/123456/em15-340-yangxi/lab2/lab2.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source system_wrapper.tcl -notrace
