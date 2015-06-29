@@ -1,0 +1,5 @@
+10:58:53 INFO  : Processing command line option -hwspec E:/jl_Zhou/lab2/lab2.sdk/system_wrapper.hdf.
+10:59:54 INFO  : Processing command line option -hwspec E:/jl_Zhou/lab2/lab2.sdk/system_wrapper.hdf.
+10:59:54 INFO  : Checking for hwspec changes in the project system_wrapper_hw_platform_0.
+11:10:20 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+11:10:44 INFO  : Processing command line option -hwspec E:/jl_Zhou/lab2/lab2.sdk/system_wrapper.hdf.

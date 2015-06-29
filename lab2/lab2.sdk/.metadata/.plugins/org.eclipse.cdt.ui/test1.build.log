@@ -1,0 +1,25 @@
+12:01:01 **** Auto Build of configuration Debug for project test1 ****
+make all 
+'Building file: ../src/JWlab2.c'
+'Invoking: ARM gcc compiler'
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../standalone_bsp_1/ps7_cortexa9_0/include -MMD -MP -MF"src/JWlab2.d" -MT"src/JWlab2.d" -o "src/JWlab2.o" "../src/JWlab2.c"
+In file included from ../../standalone_bsp_1/ps7_cortexa9_0/include/xutil.h:112:0,
+                 from ../src/JWlab2.c:3:
+../../standalone_bsp_1/ps7_cortexa9_0/include/xbasic_types.h:124:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+ #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+  ^
+../../standalone_bsp_1/ps7_cortexa9_0/include/xbasic_types.h:125:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+ #warning  Please refer the Standalone BSP UG647 for further details
+  ^
+../src/JWlab2.c: In function 'main':
+../src/JWlab2.c:43:24: error: 'XPAR_SW_4BIT_DEVICE_ID' undeclared (first use in this function)
+  XGpio_Initialize(&led,XPAR_SW_4BIT_DEVICE_ID);
+                        ^
+../src/JWlab2.c:43:24: note: each undeclared identifier is reported only once for each function it appears in
+../src/JWlab2.c:46:26: error: 'XPAR_BTNS_4BIT_DEVICE_ID' undeclared (first use in this function)
+  XGpio_Initialize(&push, XPAR_BTNS_4BIT_DEVICE_ID);
+                          ^
+make: *** [src/JWlab2.o] ´íÎó 1
+
+12:01:02 Build Finished (took 499ms)
+
